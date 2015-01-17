@@ -98,6 +98,7 @@ public class Player : MonoBehaviour {
 			            transform.position,
 			            Quaternion.identity) as Projectile;
 		newProjectile.SetDirection(projectileDirection);
+		newProjectile.owner = collider;
 	}
 
 	void PlaceMine()

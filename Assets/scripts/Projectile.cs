@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour {
 	public float speed;
 	public float timeToDestruction;
 	public int damage;
+	public Collider owner { get; set; }
 
 	Vector3 direction;
 
@@ -15,6 +16,9 @@ public class Projectile : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Enemy")) {
 			other.GetComponent<Enemy>().AddHealth(-damage);
+		}
+
+		if (other != owner) {
 			Destroy(gameObject);
 		}
 	}
